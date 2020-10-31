@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Game from "./components/Game";
 
 function App() {
+  const level = 3;
+  const matrixSize = level * level;
+  const nDifferent = Math.floor(Math.random() * matrixSize);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Game level={level} matrixSize={matrixSize} nDifferent={nDifferent} />
     </div>
   );
 }
