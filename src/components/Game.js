@@ -4,6 +4,7 @@ import { createUseStyles } from "react-jss";
 const useStyles = createUseStyles({
   cards: {
     maxWidth: "1200px",
+    maxHeight: "1200px",
     margin: "0 auto",
     display: "grid",
     gridGap: "1rem",
@@ -11,21 +12,23 @@ const useStyles = createUseStyles({
     border: "3px solid green",
   },
   card: {
-    backgroundColor: "blue",
+    backgroundColor: ({ color }) => `hsl(${color}, 50%, 50%)`,
     color: "white",
     padding: "1rem",
-    height: "4rem",
+    height: ({ level }) => `(${100 / level}%, 1fr)`,
+    width: ({ level }) => `(${100 / level}%, 1fr)`,
   },
   cardDifferent: {
-    backgroundColor: "red",
+    backgroundColor: ({ color }) => `hsl(${color}, 20%, 50%)`,
     color: "white",
     padding: "1rem",
-    height: "4rem",
+    height: ({ level }) => `(${100 / level}%, 1fr)`,
+    width: ({ level }) => `(${100 / level}%, 1fr)`,
   },
 });
 
-const Game = ({ level, matrixSize, nDifferent, onCardClicked }) => {
-  const classes = useStyles({ level });
+const Game = ({ level, matrixSize, nDifferent, color, onCardClicked }) => {
+  const classes = useStyles({ level, color });
 
   return (
     <div className={classes.cards}>
