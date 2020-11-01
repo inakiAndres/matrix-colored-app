@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   cards: {
-    maxWidth: "1200px",
-    maxHeight: "1200px",
+    width: "50vw",
+    height: "50vw",
     margin: "0 auto",
     display: "grid",
     gridGap: "1rem",
@@ -14,20 +14,25 @@ const useStyles = createUseStyles({
   card: {
     backgroundColor: ({ color }) => `hsl(${color}, 50%, 50%)`,
     color: "white",
-    padding: "1rem",
-    height: ({ level }) => `(${100 / level}%, 1fr)`,
-    width: ({ level }) => `(${100 / level}%, 1fr)`,
   },
   cardDifferent: {
     backgroundColor: ({ color }) => `hsl(${color}, 20%, 50%)`,
     color: "white",
-    padding: "1rem",
-    height: ({ level }) => `(${100 / level}%, 1fr)`,
-    width: ({ level }) => `(${100 / level}%, 1fr)`,
   },
 });
 
-const Game = ({ level, matrixSize, nDifferent, color, onCardClicked }) => {
+const Game = ({ level, onCardClicked }) => {
+  const [color, setColor] = useState();
+
+  useEffect(() => {
+    setColor(Math.floor(Math.random() * 360));
+  }, [level]);
+
+  const matrixSize = level * level;
+  const nDifferent = Math.floor(Math.random() * matrixSize);
+  const checkResult = (tileIndex) => () => {
+    tileIndex === nDifferent ? onCardClicked("won") : onCardClicked("lost");
+  };
   const classes = useStyles({ level, color });
 
   return (
@@ -37,20 +42,14 @@ const Game = ({ level, matrixSize, nDifferent, color, onCardClicked }) => {
           <div
             className={classes.card}
             key={tileIndex}
-            id={tileIndex}
-            onClick={onCardClicked}
-          >
-            {tileIndex}
-          </div>
+            onClick={checkResult(tileIndex)}
+          ></div>
         ) : (
           <div
             className={classes.cardDifferent}
             key={tileIndex}
-            id={tileIndex}
-            onClick={onCardClicked}
-          >
-            {nDifferent}
-          </div>
+            onClick={checkResult(tileIndex)}
+          ></div>
         )
       )}
     </div>

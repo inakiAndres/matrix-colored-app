@@ -4,7 +4,7 @@ const LeaderBoard = ({ scores }) => {
   return (
     <>
       <div>LEADERBOARD</div>
-      <table>
+      <table style={{ margin: "0 auto" }}>
         <thead>
           <tr>
             <th>Nickname</th>
