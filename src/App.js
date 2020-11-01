@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Game from "./components/Game";
-import LevelManager from "./components/LevelManager";
+import CountDown from "./components/CountDown";
 
 function App() {
   const [level, setLevel] = useState(2);
   const [color, setColor] = useState();
+  const [showCountDown, setShowCountDown] = useState(false);
   useEffect(() => {
     setColor(Math.floor(Math.random() * 360));
   }, [level]);
   const matrixSize = level * level;
   const nDifferent = Math.floor(Math.random() * matrixSize);
   const checkResult = (e) => {
-    e.target.id == nDifferent ? nextLevel() : gameOver();
+    e.target.id == nDifferent ? setShowCountDown(true) : gameOver();
   };
   const nextLevel = () => {
     setLevel(level + 1);
+    setShowCountDown(false);
   };
   const gameOver = () => {
     setLevel(2);
@@ -23,13 +25,29 @@ function App() {
   return (
     <div className="App">
       <div>LEVEL {level - 1}</div>
-      <Game
-        level={level}
-        matrixSize={matrixSize}
-        nDifferent={nDifferent}
-        color={color}
-        onCardClicked={checkResult}
-      />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {showCountDown ? (
+          <div>
+            That's correct!!
+            <br />
+            <CountDown time={3} onCountDownEnds={nextLevel} />
+          </div>
+        ) : (
+          <Game
+            level={level}
+            matrixSize={matrixSize}
+            nDifferent={nDifferent}
+            color={color}
+            onCardClicked={checkResult}
+          />
+        )}
+      </div>
     </div>
   );
 }
