@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Game from "./components/Game";
+import Gameover from "./components/Gameover";
 import CountDown from "./components/CountDown";
 
 function App() {
   const [level, setLevel] = useState(2);
   const [color, setColor] = useState();
-  const [showCountDown, setShowCountDown] = useState(false);
+  const [gameState, setGameState] = useState("playing");
+
   useEffect(() => {
     setColor(Math.floor(Math.random() * 360));
   }, [level]);
+
   const matrixSize = level * level;
   const nDifferent = Math.floor(Math.random() * matrixSize);
   const checkResult = (e) => {
-    e.target.id == nDifferent ? setShowCountDown(true) : gameOver();
+    e.target.id == nDifferent ? setGameState("won") : setGameState("lost");
   };
   const nextLevel = () => {
     setLevel(level + 1);
-    setShowCountDown(false);
+    setGameState("playing");
   };
   const gameOver = () => {
     setLevel(2);
+    setGameState("playing");
   };
   return (
     <div className="App">
@@ -32,13 +36,14 @@ function App() {
           justifyContent: "center",
         }}
       >
-        {showCountDown ? (
+        {gameState == "won" && (
           <div>
             That's correct!!
             <br />
-            <CountDown time={3} onCountDownEnds={nextLevel} />
+            <CountDown time={1} onCountDownEnds={nextLevel} />
           </div>
-        ) : (
+        )}
+        {gameState == "playing" && (
           <Game
             level={level}
             matrixSize={matrixSize}
@@ -48,6 +53,7 @@ function App() {
           />
         )}
       </div>
+      {gameState == "lost" && <Gameover level={level} onRestart={gameOver} />}
     </div>
   );
 }
