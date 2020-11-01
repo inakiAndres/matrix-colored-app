@@ -24,18 +24,28 @@ const useStyles = createUseStyles({
   },
 });
 
-const Game = ({ level, matrixSize, nDifferent }) => {
+const Game = ({ level, matrixSize, nDifferent, onCardClicked }) => {
   const classes = useStyles({ level });
 
   return (
     <div className={classes.cards}>
       {[...Array(matrixSize)].map((_, tileIndex) =>
         tileIndex !== nDifferent ? (
-          <div className={classes.card} key={tileIndex}>
+          <div
+            className={classes.card}
+            key={tileIndex}
+            id={tileIndex}
+            onClick={onCardClicked}
+          >
             {tileIndex}
           </div>
         ) : (
-          <div className={classes.cardDifferent} key={tileIndex}>
+          <div
+            className={classes.cardDifferent}
+            key={tileIndex}
+            id={tileIndex}
+            onClick={onCardClicked}
+          >
             {nDifferent}
           </div>
         )
