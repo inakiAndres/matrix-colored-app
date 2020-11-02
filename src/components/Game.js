@@ -9,7 +9,6 @@ const useStyles = createUseStyles({
     display: "grid",
     gridGap: ({ gapSize }) => `${gapSize}rem`,
     gridTemplateColumns: ({ level }) => `repeat(${level}, 1fr)`,
-    border: "3px solid green",
     "@media screen and (max-width: 575.98px)": {
       width: "40vh",
       height: "40vh",
