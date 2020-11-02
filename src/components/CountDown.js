@@ -2,7 +2,7 @@ import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { createUseStyles } from "react-jss";
 const useStyles = createUseStyles({
-  countDown: {},
+  countDown: { marginTop: "20px" },
 });
 const CountDown = ({ time, onCountDownEnds }) => {
   const classes = useStyles();

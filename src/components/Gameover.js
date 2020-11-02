@@ -1,10 +1,20 @@
 import React, { useState } from "react";
+import { createUseStyles } from "react-jss";
 import LeaderBoard from "./LeaderBoard";
 import { getArray, pushArrayItem } from "../utils/storageManager";
 
-const Gameover = ({ level, onRestart }) => {
-  const [wantToSave, setWantToSave] = useState(false);
+const useStyles = createUseStyles({
+  gameOver: {
+    fontSize: "26px",
+    "@media screen and (max-width: 575.98px)": {
+      fontSize: "22px",
+    },
+  },
+});
 
+const Gameover = ({ level, onRestart }) => {
+  const classes = useStyles();
+  const [wantToSave, setWantToSave] = useState(false);
   const scores = getArray("scores");
   const setScore = (e) => {
     const nick = e.target.name.value;
@@ -12,7 +22,7 @@ const Gameover = ({ level, onRestart }) => {
   };
 
   return (
-    <div>
+    <div className={classes.gameOver}>
       {wantToSave ? (
         <form onSubmit={setScore}>
           <label>

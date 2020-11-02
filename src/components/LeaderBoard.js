@@ -1,18 +1,19 @@
 import React from "react";
-
-const styles = {
+import { createUseStyles } from "react-jss";
+const useStyles = createUseStyles({
   space: {
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: "10px",
   },
-};
+});
 
 const LeaderBoard = ({ scores }) => {
+  const classes = useStyles();
   return (
     <>
-      <div style={styles.space}>LEADERBOARD</div>
-      <table style={styles.space}>
+      <div className={classes.space}>LEADERBOARD</div>
+      <table className={classes.space}>
         <thead>
           <tr>
             <th>Nickname</th>
