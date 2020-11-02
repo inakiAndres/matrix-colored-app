@@ -4,9 +4,12 @@
 }
 .Game {
   display: flex;
-  align-items: center;
   justify-content: center;
   height: 90vh;
+}
+.alignCenter {
+  display: flex;
+  align-items: center;
 }
 .title {
   font-size: 30px;

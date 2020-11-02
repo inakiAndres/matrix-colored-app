@@ -1,10 +1,18 @@
 import React from "react";
 
+const styles = {
+  space: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "10px",
+  },
+};
+
 const LeaderBoard = ({ scores }) => {
   return (
     <>
-      <div>LEADERBOARD</div>
-      <table style={{ margin: "0 auto" }}>
+      <div style={styles.space}>LEADERBOARD</div>
+      <table style={styles.space}>
         <thead>
           <tr>
             <th>Nickname</th>

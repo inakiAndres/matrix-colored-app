@@ -20,16 +20,18 @@ function App() {
     <div className="App">
       <div className="title">LEVEL {level - 1}</div>
       <div className="Game">
-        {gameState === "won" && (
-          <div>
-            That's correct!!
-            <br />
-            <CountDown time={1} onCountDownEnds={nextLevel} />
-          </div>
-        )}
-        {gameState === "playing" && (
-          <Game level={level} onCardClicked={setGameState} />
-        )}
+        <div className="alignCenter">
+          {gameState === "won" && (
+            <div>
+              That's correct!!
+              <br />
+              <CountDown time={1} onCountDownEnds={nextLevel} />
+            </div>
+          )}
+          {gameState === "playing" && (
+            <Game level={level} onCardClicked={setGameState} />
+          )}
+        </div>
         {gameState === "lost" && (
           <Gameover level={level} onRestart={gameOver} />
         )}
