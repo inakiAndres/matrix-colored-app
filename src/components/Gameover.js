@@ -12,7 +12,7 @@ const Gameover = ({ level, onRestart }) => {
   };
 
   return (
-    <>
+    <div>
       {wantToSave ? (
         <form onSubmit={setScore}>
           <label>
@@ -30,7 +30,7 @@ const Gameover = ({ level, onRestart }) => {
         </div>
       )}
       <LeaderBoard scores={scores} />
-    </>
+    </div>
   );
 };
 

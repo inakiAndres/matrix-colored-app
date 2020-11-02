@@ -18,7 +18,7 @@ function App() {
   };
   return (
     <div className="App">
-      <div>LEVEL {level - 1}</div>
+      <div className="title">LEVEL {level - 1}</div>
       <div className="Game">
         {gameState === "won" && (
           <div>
@@ -30,8 +30,10 @@ function App() {
         {gameState === "playing" && (
           <Game level={level} onCardClicked={setGameState} />
         )}
+        {gameState === "lost" && (
+          <Gameover level={level} onRestart={gameOver} />
+        )}
       </div>
-      {gameState === "lost" && <Gameover level={level} onRestart={gameOver} />}
     </div>
   );
 }
