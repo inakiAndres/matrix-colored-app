@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Game from "./components/Game";
+import Gameover from "./components/Gameover";
+import CountDown from "./components/CountDown";
 
 function App() {
+  const [level, setLevel] = useState(2);
+  const [gameState, setGameState] = useState("playing");
+
+  const nextLevel = () => {
+    setLevel(level + 1);
+    setGameState("playing");
+  };
+  const gameOver = () => {
+    setLevel(2);
+    setGameState("playing");
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="title">LEVEL {level - 1}</div>
+      <div className="Game">
+        <div className="alignCenter">
+          {gameState === "won" && (
+            <div>
+              That's correct!!
+              <br />
+              <CountDown time={1} onCountDownEnds={nextLevel} />
+            </div>
+          )}
+          {gameState === "playing" && (
+            <Game level={level} onCardClicked={setGameState} />
+          )}
+        </div>
+        {gameState === "lost" && (
+          <Gameover level={level} onRestart={gameOver} />
+        )}
+      </div>
     </div>
   );
 }
