@@ -18,7 +18,7 @@ const Gameover = ({ level, onRestart }) => {
   const scores = getArray("scores");
   const setScore = (e) => {
     const nick = e.target.name.value;
-    pushArrayItem("scores", { nick, level });
+    pushArrayItem("scores", { nick, level: level - 1 });
   };
 
   return (
