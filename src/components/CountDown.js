@@ -14,7 +14,7 @@ const CountDown = ({ time, onCountDownEnds }) => {
         colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
         onComplete={onCountDownEnds}
       >
-        {({ remainingTime }) => "Next level in " + remainingTime}
+        {() => "That's correct!!"}
       </CountdownCircleTimer>
     </div>
   );

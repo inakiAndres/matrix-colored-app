@@ -22,11 +22,7 @@ function App() {
       <div className="Game">
         <div className="alignCenter">
           {gameState === "won" && (
-            <div>
-              That's correct!!
-              <br />
-              <CountDown time={1} onCountDownEnds={nextLevel} />
-            </div>
+            <CountDown time={1} onCountDownEnds={nextLevel} />
           )}
           {gameState === "playing" && (
             <Game level={level} onCardClicked={setGameState} />

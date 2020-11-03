@@ -10,6 +10,21 @@ const useStyles = createUseStyles({
       fontSize: "22px",
     },
   },
+  input: {
+    border: "2px solid #555",
+    backgroundColor: "transparent",
+    width: "50px",
+    textAlign: "center",
+  },
+  buttons: {
+    margin: "0 10px",
+    border: "2px solid #555",
+    borderRadius: "8px",
+    backgroundColor: "transparent",
+    textAlign: "center",
+    fontFamily: "Itim",
+    boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0)",
+  },
 });
 
 const Gameover = ({ level, onRestart }) => {
@@ -23,20 +38,41 @@ const Gameover = ({ level, onRestart }) => {
 
   return (
     <div className={classes.gameOver}>
+      GameOver
+      <div>you have reached the level: {level - 1} </div>
       {wantToSave ? (
-        <form onSubmit={setScore}>
-          <label>
-            <input type="text" name="name" placeholder="_ _ _" maxLength="3" />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <>
+          <div>Insert your initials here:</div>
+          <form onSubmit={setScore}>
+            <label>
+              <input
+                className={classes.input}
+                type="text"
+                name="name"
+                placeholder="_ _ _"
+                maxLength="3"
+              />
+            </label>
+            <input className={classes.buttons} type="submit" value="Submit" />
+          </form>
+        </>
       ) : (
         <div>
-          GameOver
-          <div>you have reached the level: {level - 1} </div>
           <div>Do you want to save your score?</div>
-          <button onClick={() => setWantToSave(true)}>Yes</button>
-          <button onClick={onRestart}>No, restart the game</button>
+          <button
+            className={classes.buttons}
+            style={{ borderColor: "green" }}
+            onClick={() => setWantToSave(true)}
+          >
+            Yes
+          </button>
+          <button
+            className={classes.buttons}
+            style={{ borderColor: "red" }}
+            onClick={onRestart}
+          >
+            No, restart the game
+          </button>
         </div>
       )}
       <LeaderBoard scores={scores} />

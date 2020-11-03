@@ -6,6 +6,10 @@ const useStyles = createUseStyles({
     marginRight: "auto",
     marginTop: "10px",
   },
+  column: {
+    paddingRight: "10px",
+    paddingLeft: "10px",
+  },
 });
 
 const LeaderBoard = ({ scores }) => {
@@ -16,15 +20,15 @@ const LeaderBoard = ({ scores }) => {
       <table className={classes.space}>
         <thead>
           <tr>
-            <th>Nickname</th>
-            <th>Level</th>
+            <th className={classes.column}>Nickname</th>
+            <th className={classes.column}>Level</th>
           </tr>
         </thead>
         <tbody>
           {scores.map((score, index) => (
             <tr key={index}>
-              <td>{score.nick}</td>
-              <td>{score.level}</td>
+              <td className={classes.column}>{score.nick}</td>
+              <td className={classes.column}>{score.level}</td>
             </tr>
           ))}
         </tbody>
