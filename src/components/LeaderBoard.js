@@ -13,7 +13,10 @@ const useStyles = createUseStyles({
     minWidth: "25px",
     padding: 10,
     "@media screen and (max-width: 575.98px)": {
-      padding: 5,
+      paddingLeft: 5,
+      paddingRight: 5,
+      paddingTop: 2.5,
+      paddingBottom: 2.5,
     },
   },
   input: {
@@ -23,9 +26,8 @@ const useStyles = createUseStyles({
     textAlign: "center",
   },
   buttons: {
-    margin: "0 10px",
-    border: "2px solid #555",
-    borderRadius: "8px",
+    margin: "10px",
+    border: "1px solid",
     backgroundColor: "divansparent",
     textAlign: "center",
     fontFamily: "Itim",
@@ -88,10 +90,10 @@ const LeaderBoard = ({ level, onRestart }) => {
         </>
       ) : (
         <div>
-          <div>Do you want to save your score?</div>
+          <div className={classes.space}>Do you want to save your score?</div>
           <button
             className={classes.buttons}
-            style={{ borderColor: "green" }}
+            style={{ backgroundColor: "hsl(120, 70%, 70%)" }}
             onClick={() => setWantToSave(true)}
           >
             Yes

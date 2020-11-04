@@ -11,23 +11,25 @@ const useStyles = createUseStyles({
   },
 });
 
-const Gameover = ({ level }) => {
+const Gameover = ({ level, title, isLastLevel }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.gameOver}>
-      GameOver
-      <div>you have reached the level: {level - 1} </div>
+      {title}
+      {isLastLevel ? (
+        <div>You have reached to the last level </div>
+      ) : (
+        <div>You have reached the level: {level - 1} </div>
+      )}
     </div>
   );
 };
 
 Gameover.propTypes = {
   level: PropTypes.number.isRequired,
-};
-
-Gameover.defaultProps = {
-  level: 2,
+  title: PropTypes.string.isRequired,
+  isLastLevel: PropTypes.bool.isRequired,
 };
 
 export default Gameover;
