@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Game from "./components/Game";
 import Gameover from "./components/Gameover";
@@ -6,13 +6,9 @@ import CountDown from "./components/CountDown";
 
 function App() {
   const [level, setLevel] = useState(2);
-  const [color, setColor] = useState();
   const [bgcolor, setBgColor] = useState();
 
   const [gameState, setGameState] = useState("playing");
-  useEffect(() => {
-    newColors();
-  }, [level]);
 
   const nextLevel = () => {
     setLevel(level + 1);
@@ -20,14 +16,7 @@ function App() {
   };
   const gameOver = () => {
     setLevel(2);
-    newColors();
     setGameState("playing");
-  };
-  const newColors = () => {
-    const newColor = Math.floor(Math.random() * 360);
-    setColor(newColor);
-    if (newColor + 180 <= 360) setBgColor(newColor + 180);
-    else setBgColor(newColor - 180);
   };
 
   return (
@@ -39,7 +28,11 @@ function App() {
       <div className="Game">
         <div className="alignCenter">
           {gameState === "playing" && (
-            <Game level={level} color={color} onCardClicked={setGameState} />
+            <Game
+              level={level}
+              onBgColor={setBgColor}
+              onCardClicked={setGameState}
+            />
           )}
           {gameState === "levelUp" &&
             (level <= 20 ? (

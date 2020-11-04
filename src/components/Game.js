@@ -28,24 +28,31 @@ const useStyles = createUseStyles({
   },
 });
 
-const Game = ({ level, color, onCardClicked }) => {
+const Game = ({ level, onBgColor, onCardClicked }) => {
   //Color region
   const principalColorSatAndLum = 50;
+  const [color, setColor] = useState();
   const [saturation, setSaturation] = useState(30);
   const [lightness, setLightness] = useState(30);
-  const randomColors = () => {
-    const maxVariant = 20 - level / 2;
-    const diffVariant = Math.floor(Math.random() * maxVariant);
-    setSaturation(principalColorSatAndLum - (maxVariant - diffVariant));
-    setLightness(principalColorSatAndLum - diffVariant);
-  };
+
   useEffect(() => {
+    const randomColors = () => {
+      const newColor = Math.floor(Math.random() * 360);
+      setColor(newColor);
+      if (newColor + 180 <= 360) onBgColor(newColor + 180);
+      else onBgColor(newColor - 180);
+      const maxVariant = 20 - level / 2;
+      const diffVariant = Math.floor(Math.random() * maxVariant);
+      setSaturation(principalColorSatAndLum - (maxVariant - diffVariant));
+      setLightness(principalColorSatAndLum - diffVariant);
+    };
     randomColors();
   }, [level]);
 
   //Size and gameplay region
   const matrixSize = level * level;
   const nDifferent = Math.floor(Math.random() * matrixSize);
+
   const checkResult = (tileIndex) => () => {
     tileIndex === nDifferent ? onCardClicked("levelUp") : onCardClicked("lost");
   };
@@ -82,7 +89,7 @@ const Game = ({ level, color, onCardClicked }) => {
 
 Game.propTypes = {
   level: PropTypes.number.isRequired,
-  color: PropTypes.number.isRequired,
+  onBgColor: PropTypes.func.isRequired,
   onCardClicked: PropTypes.func.isRequired,
 };
 
