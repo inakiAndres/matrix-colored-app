@@ -28,6 +28,21 @@ const useStyles = createUseStyles({
     fontFamily: "Itim",
     boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0)",
   },
+  firstClassified: {
+    marginBottom: "10px",
+    backgroundColor: "goldenrod",
+    boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.16)",
+  },
+  secondClassified: {
+    marginBottom: "10px",
+    backgroundColor: "silver",
+    boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.16)",
+  },
+  thirdClassified: {
+    marginBottom: "10px",
+    backgroundColor: "#cd7f32",
+    boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.16)",
+  },
 });
 
 const LeaderBoard = ({ level, onRestart }) => {
@@ -85,12 +100,34 @@ const LeaderBoard = ({ level, onRestart }) => {
           </tr>
         </thead>
         <tbody>
-          {scores.map((score, index) => (
-            <tr key={index}>
-              <td className={classes.column}>{score.nick}</td>
-              <td className={classes.column}>{score.level}</td>
-            </tr>
-          ))}
+          {scores.map(
+            (score, index) =>
+              ({
+                0: (
+                  <tr className={classes.firstClassified} key={index}>
+                    <td className={classes.column}>{score.nick}</td>
+                    <td className={classes.column}>{score.level}</td>
+                  </tr>
+                ),
+                1: (
+                  <tr className={classes.secondClassified} key={index}>
+                    <td className={classes.column}>{score.nick}</td>
+                    <td className={classes.column}>{score.level}</td>
+                  </tr>
+                ),
+                2: (
+                  <tr className={classes.thirdClassified} key={index}>
+                    <td className={classes.column}>{score.nick}</td>
+                    <td className={classes.column}>{score.level}</td>
+                  </tr>
+                ),
+              }[index] || (
+                <tr key={index}>
+                  <td className={classes.column}>{score.nick}</td>
+                  <td className={classes.column}>{score.level}</td>
+                </tr>
+              ))
+          )}
         </tbody>
       </table>
     </>
