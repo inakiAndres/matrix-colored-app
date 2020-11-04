@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
@@ -27,16 +28,14 @@ const useStyles = createUseStyles({
   },
 });
 
-const Game = ({ level, onCardClicked }) => {
+const Game = ({ level, color, onCardClicked }) => {
   //Color region
   const principalColorSatAndLum = 50;
-  const [color, setColor] = useState();
   const [saturation, setSaturation] = useState(30);
   const [lightness, setLightness] = useState(30);
   const randomColors = () => {
     const maxVariant = 20 - level / 2;
     const diffVariant = Math.floor(Math.random() * maxVariant);
-    setColor(Math.floor(Math.random() * 360));
     setSaturation(principalColorSatAndLum - (maxVariant - diffVariant));
     setLightness(principalColorSatAndLum - diffVariant);
   };
@@ -48,7 +47,7 @@ const Game = ({ level, onCardClicked }) => {
   const matrixSize = level * level;
   const nDifferent = Math.floor(Math.random() * matrixSize);
   const checkResult = (tileIndex) => () => {
-    tileIndex === nDifferent ? onCardClicked("won") : onCardClicked("lost");
+    tileIndex === nDifferent ? onCardClicked("levelUp") : onCardClicked("lost");
   };
   const gapSize = 1 - 0.02 * level;
   const classes = useStyles({
@@ -79,6 +78,16 @@ const Game = ({ level, onCardClicked }) => {
       )}
     </div>
   );
+};
+
+Game.propTypes = {
+  level: PropTypes.number.isRequired,
+  color: PropTypes.number.isRequired,
+  onCardClicked: PropTypes.func.isRequired,
+};
+
+Game.defaultProps = {
+  level: 2,
 };
 
 export default Game;

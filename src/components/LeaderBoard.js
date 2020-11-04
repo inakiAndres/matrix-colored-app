@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
+
 const useStyles = createUseStyles({
   space: {
     marginLeft: "auto",
@@ -36,4 +38,13 @@ const LeaderBoard = ({ scores }) => {
     </>
   );
 };
+
+LeaderBoard.propTypes = {
+  scores: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
+
+LeaderBoard.defaultProps = {
+  time: 1,
+};
+
 export default LeaderBoard;

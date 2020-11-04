@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 import LeaderBoard from "./LeaderBoard";
 import { getArray, pushArrayItem } from "../utils/storageManager";
@@ -78,6 +79,15 @@ const Gameover = ({ level, onRestart }) => {
       <LeaderBoard scores={scores} />
     </div>
   );
+};
+
+Gameover.propTypes = {
+  level: PropTypes.number.isRequired,
+  onRestart: PropTypes.func.isRequired,
+};
+
+Gameover.defaultProps = {
+  level: 2,
 };
 
 export default Gameover;
