@@ -3,7 +3,6 @@ import "./App.css";
 import Game from "./components/Game";
 import Gameover from "./components/Gameover";
 import CountDown from "./components/CountDown";
-import Win from "./components/Win";
 import LeaderBoard from "./components/LeaderBoard";
 
 function App() {
@@ -29,27 +28,39 @@ function App() {
       <div className="title">LEVEL {level - 1}</div>
       <div className="Game">
         <div className="alignCenter">
-          {gameState === "playing" && (
+          {{
+            playing: (
+              <Game
+                level={level}
+                onBgColor={setBgColor}
+                onCardClicked={setGameState}
+              />
+            ),
+            levelUp:
+              level <= 20 ? (
+                <CountDown time={1} onCountDownEnds={nextLevel} />
+              ) : (
+                <div className="gameEnd">
+                  <Gameover
+                    level={level}
+                    title="YOU ARE THE BEST!"
+                    isLastLevel={true}
+                  />
+                  <LeaderBoard level={level} onRestart={gameOver} />
+                </div>
+              ),
+            lost: (
+              <div className="gameEnd">
+                <Gameover level={level} title="GAME OVER" isLastLevel={false} />
+                <LeaderBoard level={level} onRestart={gameOver} />
+              </div>
+            ),
+          }[gameState] || (
             <Game
               level={level}
               onBgColor={setBgColor}
               onCardClicked={setGameState}
             />
-          )}
-          {gameState === "levelUp" &&
-            (level <= 20 ? (
-              <CountDown time={1} onCountDownEnds={nextLevel} />
-            ) : (
-              <div className="gameEnd">
-                <Win level={level} />
-                <LeaderBoard level={level} onRestart={gameOver} />
-              </div>
-            ))}
-          {gameState === "lost" && (
-            <div className="gameEnd">
-              <Gameover level={level} />
-              <LeaderBoard level={level} onRestart={gameOver} />
-            </div>
           )}
         </div>
       </div>
