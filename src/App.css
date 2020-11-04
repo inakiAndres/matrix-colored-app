@@ -1,4 +1,6 @@
 .App {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
   font-family: "Itim";
 }
@@ -10,6 +12,10 @@
 .alignCenter {
   display: flex;
   align-items: center;
+}
+.gameEnd {
+  background-color: whitesmoke;
+  padding: 20px;
 }
 .title {
   font-size: 30px;

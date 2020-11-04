@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
-import LeaderBoard from "./LeaderBoard";
-import { getArray, pushArrayItem } from "../utils/storageManager";
 
 const useStyles = createUseStyles({
   gameOver: {
@@ -12,36 +11,25 @@ const useStyles = createUseStyles({
   },
 });
 
-const Gameover = ({ level, onRestart }) => {
+const Gameover = ({ level, title, isLastLevel }) => {
   const classes = useStyles();
-  const [wantToSave, setWantToSave] = useState(false);
-  const scores = getArray("scores");
-  const setScore = (e) => {
-    const nick = e.target.name.value;
-    pushArrayItem("scores", { nick, level: level - 1 });
-  };
 
   return (
     <div className={classes.gameOver}>
-      {wantToSave ? (
-        <form onSubmit={setScore}>
-          <label>
-            <input type="text" name="name" placeholder="_ _ _" maxLength="3" />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+      {title}
+      {isLastLevel ? (
+        <div>You have reached to the last level </div>
       ) : (
-        <div>
-          GameOver
-          <div>you have reached the level: {level - 1} </div>
-          <div>Do you want to save your score?</div>
-          <button onClick={() => setWantToSave(true)}>Yes</button>
-          <button onClick={onRestart}>No, restart the game</button>
-        </div>
+        <div>You have reached the level: {level - 1} </div>
       )}
-      <LeaderBoard scores={scores} />
     </div>
   );
+};
+
+Gameover.propTypes = {
+  level: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  isLastLevel: PropTypes.bool.isRequired,
 };
 
 export default Gameover;

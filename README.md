@@ -34,8 +34,8 @@ In this exercise I'm using HSL color which is composed by 3 parameters:
     ### But how `maxVariant` is used in the random?
 
     maxVariant is all the difference that can be from the `principalColorSatAndLum` and the new Saturation & Lightness, then with the intention of always this two valors will be different, I'm doing a new random (`diffVariant`) to divide in two the valor of `maxVariant`.
-    For Saturation the formula will be the saturation of all the cards (`principalColorSatAndLum`) less the difference between `maxVariant` and `diffVariant`.
-    For Lightness the formula will be the lightness of all the cards (`principalColorSatAndLum`) less `diffVariant`.
+    For Saturation, I will use one part of `maxVariant`. In this case => `maxVariant`-`diffVariant`.
+    For Lightness, I will use the other part of `maxVariant`. In this case => `diffVariant`.
 
     ```jsx
     const diffVariant = Math.floor(Math.random() * maxVariant);
