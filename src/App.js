@@ -3,6 +3,8 @@ import "./App.css";
 import Game from "./components/Game";
 import Gameover from "./components/Gameover";
 import CountDown from "./components/CountDown";
+import Win from "./components/Win";
+import LeaderBoard from "./components/LeaderBoard";
 
 function App() {
   const [level, setLevel] = useState(2);
@@ -38,12 +40,18 @@ function App() {
             (level <= 20 ? (
               <CountDown time={1} onCountDownEnds={nextLevel} />
             ) : (
-              <Gameover level={level} onRestart={gameOver} />
+              <div className="gameEnd">
+                <Win level={level} />
+                <LeaderBoard level={level} onRestart={gameOver} />
+              </div>
             ))}
+          {gameState === "lost" && (
+            <div className="gameEnd">
+              <Gameover level={level} />
+              <LeaderBoard level={level} onRestart={gameOver} />
+            </div>
+          )}
         </div>
-        {gameState === "lost" && (
-          <Gameover level={level} onRestart={gameOver} />
-        )}
       </div>
     </div>
   );
