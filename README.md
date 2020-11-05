@@ -1,6 +1,11 @@
 # matrix-colored-app
 
-React app which consist in a game
+React app which consist in a minigame
+
+The game consists in a matrix of squares and you have to tap the square which have the different color. If you tap the correct you will level up, and the matrix will be growing by levels.<br>
+The level 20 is the last level, I select this one because the difference of the color, and the size of the matrix and squares is enough.
+
+Explained this let's play => https://inakiandres.github.io/matrix-colored-app/
 
 ## Color behaviour
 
@@ -47,6 +52,10 @@ In this exercise I'm using HSL color which is composed by 3 parameters:
 
     Now we have the same quantity difference of difficult in the levels but when you will replay the game, this difficult will be split different all games.
 
+    ### What about the background color?
+
+    Is easy, the background color is the Complementary color to the main one.
+
 * Here is the all code together:
 
   The unique difference is that here I have the code in a arrow function that will be called from the useEffect when we level up
@@ -67,3 +76,29 @@ In this exercise I'm using HSL color which is composed by 3 parameters:
     randomColors();
   }, [level]);
   ```
+
+## How to use the project
+
+Download the repo, open the console in the root folder, and run `npm i`
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
+
+### `npm run deploy`
+
+If you have permission in the repo, you can run this command and the deploy will be automatically in the branch gh-pages.
