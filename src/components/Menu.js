@@ -54,9 +54,8 @@ const Menu = ({ onPlay }) => {
           square which have the different color. If you tap the correct you will
           level up, and the matrix will be growing by levels.
           <br />
-          The level 20 is the last level, I select this one because the
-          difference of the color, and the size of the matrix and squares is
-          enough.
+          The level 20 is the last level, if you beat the last level you will
+          beat the challenge!
           <br />
           GOOD LUCK!
           <br />
