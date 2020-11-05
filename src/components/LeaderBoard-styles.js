@@ -18,14 +18,14 @@ const useStyles = createUseStyles({
   },
   input: {
     border: "2px solid #555",
-    backgroundColor: "divansparent",
+    backgroundColor: "transparent",
     width: "50px",
     textAlign: "center",
   },
   buttons: {
     margin: "10px",
     border: "1px solid",
-    backgroundColor: "divansparent",
+    backgroundColor: "transparent",
     textAlign: "center",
     fontFamily: "Itim",
     boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0)",

@@ -7,9 +7,10 @@ const useStyles = createUseStyles({
   container: {
     display: "flex",
     padding: 20,
-    backgroundColor: ({ bgColor }) => `hsl(${bgColor}, 40%, 60%)`,
     "@media screen and (max-width: 575.98px)": {
       flexDirection: "column",
+      height: "150vh",
+      backgroundColor: `hsl(110, 50%, 60%)`,
     },
   },
   column: {
@@ -42,8 +43,8 @@ const useStyles = createUseStyles({
     fontSize: "28px",
   },
 });
-const Menu = ({ bgColor, onPlay }) => {
-  const classes = useStyles(bgColor);
+const Menu = ({ onPlay }) => {
+  const classes = useStyles();
   return (
     <div className={classes.container}>
       <div className={classes.column}>

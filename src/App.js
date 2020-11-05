@@ -74,7 +74,7 @@ function App() {
               </div>
             </div>
           ),
-        }[gameState] || <Menu bgColor={bgcolor} onPlay={startGame} />}
+        }[gameState] || <Menu onPlay={startGame} />}
       </div>
     </div>
   );
