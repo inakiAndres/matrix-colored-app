@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/matrix-colored-app/static/css/main.c31a2eb3.chunk.css",
-    "main.js": "/matrix-colored-app/static/js/main.9b306348.chunk.js",
-    "main.js.map": "/matrix-colored-app/static/js/main.9b306348.chunk.js.map",
+    "main.js": "/matrix-colored-app/static/js/main.46d07449.chunk.js",
+    "main.js.map": "/matrix-colored-app/static/js/main.46d07449.chunk.js.map",
     "runtime-main.js": "/matrix-colored-app/static/js/runtime-main.8c9af009.js",
     "runtime-main.js.map": "/matrix-colored-app/static/js/runtime-main.8c9af009.js.map",
     "static/js/2.6bc436e4.chunk.js": "/matrix-colored-app/static/js/2.6bc436e4.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.8c9af009.js",
     "static/js/2.6bc436e4.chunk.js",
     "static/css/main.c31a2eb3.chunk.css",
-    "static/js/main.9b306348.chunk.js"
+    "static/js/main.46d07449.chunk.js"
   ]
 }
