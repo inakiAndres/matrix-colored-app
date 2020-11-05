@@ -7,6 +7,10 @@ The level 20 is the last level, I select this one because the difference of the 
 
 Explained this let's play => https://inakiandres.github.io/matrix-colored-app/
 
+## Demo
+
+![](demo.gif)
+
 ## Color behaviour
 
 In this exercise I'm using HSL color which is composed by 3 parameters:
