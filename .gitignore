@@ -7,6 +7,14 @@
 
 # testing
 /coverage
+/coverage-cypress
+/coverage-jest
+.nyc_output
+cypress/videos
+cypress/screenshots
+reports
+junit.xml
+cypress.env.json
 
 # production
 /build

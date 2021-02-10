@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import useStyles from "./LeaderBoard-styles";
+import useStyles from "./styles/LeaderBoard-styles";
 import { getArray, pushArrayItem } from "../utils/storageManager";
 
 const LeaderBoard = ({ level, onRestart, showQuestion }) => {

@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-const useStyles = createUseStyles({
+export const useStyles = createUseStyles({
   space: {
     marginLeft: "auto",
     marginRight: "auto",
@@ -57,5 +57,3 @@ const useStyles = createUseStyles({
     marginBottom: "10px",
   },
 });
-
-export default useStyles;

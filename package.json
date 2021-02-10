@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "jest-junit": "^12.0.0",
     "react": "^17.0.1",
     "react-countdown-circle-timer": "^2.3.7",
     "react-dom": "^17.0.1",
@@ -19,7 +20,10 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:jest:local": "react-scripts test --env=jsdom",
+    "test:local": "npm run test:jest:local",
+    "test:jest": "react-scripts test --env=jsdom --coverage --coverageDirectory=coverage-jest --reporters=\"default\" --reporters=\"jest-junit\" --watchAll=false --ci",
+    "test": "npm run test:jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-test-renderer": "^17.0.1"
   }
 }
