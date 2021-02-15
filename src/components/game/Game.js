@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useStyles } from "./styles/Game-styles";
+import { useStyles } from "../styles/Game-styles";
 
 const Game = ({ level, onBgColor, onCardClicked }) => {
   //Color region

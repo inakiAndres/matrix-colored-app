@@ -6,7 +6,7 @@ import { createUseStyles } from "react-jss";
 const CountDown = ({ time, onCountDownEnds }) => {
   const classes = useStyles();
   return (
-    <div className={classes.countDown}>
+    <div id="countDownCircle" className={classes.countDown}>
       <CountdownCircleTimer
         isPlaying
         duration={time}

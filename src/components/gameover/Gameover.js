@@ -15,7 +15,7 @@ const Gameover = ({ level, title, isLastLevel }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.gameOver}>
+    <div id="gameover" className={classes.gameOver}>
       {title}
       {isLastLevel ? (
         <div>You have reached to the last level </div>

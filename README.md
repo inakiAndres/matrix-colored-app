@@ -106,3 +106,7 @@ Your app is ready to be deployed!
 ### `npm run deploy`
 
 If you have permission in the repo, you can run this command and the deploy will be automatically in the branch gh-pages.
+
+### `npm run test`
+
+To run the tests.

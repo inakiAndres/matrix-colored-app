@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
-import Menu from "./components/Menu";
-import Game from "./components/Game";
-import Gameover from "./components/Gameover";
-import CountDown from "./components/CountDown";
-import LeaderBoard from "./components/LeaderBoard";
+import Menu from "./components/menu/Menu";
+import Game from "./components/game/Game";
+import Gameover from "./components/gameover/Gameover";
+import CountDown from "./components/count-down/CountDown";
+import LeaderBoard from "./components/leader-board/LeaderBoard";
 
 function App() {
   const [level, setLevel] = useState(2);

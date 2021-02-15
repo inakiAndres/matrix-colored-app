@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import useStyles from "./styles/LeaderBoard-styles";
-import { getArray, pushArrayItem } from "../utils/storageManager";
+import { useStyles } from "../styles/LeaderBoard-styles";
+import { getArray, pushArrayItem } from "../../utils/storageManager";
 
-const LeaderBoard = ({ level, onRestart, showQuestion }) => {
+const LeaderBoard = ({ level, onRestart, showQuestion, handleOnSubmit }) => {
   const classes = useStyles();
   const [wantToSave, setWantToSave] = useState(false);
   const scores = getArray("scores");
-  const setScore = (e) => {
-    const nick = e.target.name.value;
+  const setScore = (name) => {
+    const nick = name;
     pushArrayItem("scores", { nick, level: level - 1 });
   };
 
@@ -18,9 +18,15 @@ const LeaderBoard = ({ level, onRestart, showQuestion }) => {
         (wantToSave ? (
           <>
             <div>Insert your initials here:</div>
-            <form onSubmit={setScore}>
+            <form
+              onSubmit={(e) => {
+                handleOnSubmit(e.target.name.value);
+                setScore(e.target.name.value);
+              }}
+            >
               <label>
                 <input
+                  id="input-name"
                   className={classes.input}
                   type="text"
                   name="name"
@@ -28,13 +34,19 @@ const LeaderBoard = ({ level, onRestart, showQuestion }) => {
                   maxLength="3"
                 />
               </label>
-              <input className={classes.buttons} type="submit" value="Submit" />
+              <input
+                id="submit-btn"
+                className={classes.buttons}
+                type="submit"
+                value="Submit"
+              />
             </form>
           </>
         ) : (
           <div>
             <div className={classes.space}>Do you want to save your score?</div>
             <button
+              id="save-btn-yes"
               className={classes.buttons}
               style={{ backgroundColor: "hsl(120, 70%, 70%)" }}
               onClick={() => setWantToSave(true)}
@@ -50,7 +62,9 @@ const LeaderBoard = ({ level, onRestart, showQuestion }) => {
             </button>
           </div>
         ))}
-      <div className={classes.space}>LEADERBOARD</div>
+      <div id="leader-board" className={classes.space}>
+        LEADERBOARD
+      </div>
       <div className={classes.defaultClassified}>
         <div className={classes.column}>Nickname</div>
         <div className={classes.column}>Level</div>

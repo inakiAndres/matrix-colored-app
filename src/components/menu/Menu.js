@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LeaderBoard from "./LeaderBoard";
-import { useStyles } from "./styles/Menu-styles";
+import LeaderBoard from "../leader-board/LeaderBoard";
+import { useStyles } from "../styles/Menu-styles";
 
 const Menu = ({ onPlay }) => {
   const classes = useStyles();
