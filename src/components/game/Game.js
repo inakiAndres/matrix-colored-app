@@ -13,14 +13,20 @@ const Game = ({ level, onBgColor, onCardClicked }) => {
     const randomColors = () => {
       const newColor = Math.floor(Math.random() * 360);
       setColor(newColor);
+
       if (newColor + 180 <= 360) onBgColor(newColor + 180);
       else onBgColor(newColor - 180);
+
       const maxVariant = 20 - level / 2;
       const diffVariant = Math.floor(Math.random() * maxVariant);
+
       setSaturation(principalColorSatAndLum - (maxVariant - diffVariant));
       setLightness(principalColorSatAndLum - diffVariant);
     };
+
     randomColors();
+
+    // eslint-disable-next-line
   }, [level]);
 
   //Size and gameplay region
