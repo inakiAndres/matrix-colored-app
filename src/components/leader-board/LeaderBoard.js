@@ -7,9 +7,10 @@ const LeaderBoard = ({ level, onRestart, showQuestion, handleOnSubmit }) => {
   const classes = useStyles();
   const [wantToSave, setWantToSave] = useState(false);
   const scores = getArray("scores");
-  const setScore = (name) => {
-    const nick = name;
+  const setScore = (e) => {
+    const nick = e.target.name.value;
     pushArrayItem("scores", { nick, level: level - 1 });
+    handleOnSubmit(nick);
   };
 
   return (
@@ -18,12 +19,7 @@ const LeaderBoard = ({ level, onRestart, showQuestion, handleOnSubmit }) => {
         (wantToSave ? (
           <>
             <div>Insert your initials here:</div>
-            <form
-              onSubmit={(e) => {
-                handleOnSubmit(e.target.name.value);
-                setScore(e.target.name.value);
-              }}
-            >
+            <form onSubmit={setScore}>
               <label>
                 <input
                   id="input-name"
@@ -73,19 +69,31 @@ const LeaderBoard = ({ level, onRestart, showQuestion, handleOnSubmit }) => {
         (score, index) =>
           ({
             0: (
-              <div className={classes.firstClassified} key={index}>
+              <div
+                id="firstClassified"
+                className={classes.firstClassified}
+                key={index}
+              >
                 <div className={classes.column}>{score.nick}</div>
                 <div className={classes.column}>{score.level}</div>
               </div>
             ),
             1: (
-              <div className={classes.secondClassified} key={index}>
+              <div
+                id="secondClassified"
+                className={classes.secondClassified}
+                key={index}
+              >
                 <div className={classes.column}>{score.nick}</div>
                 <div className={classes.column}>{score.level}</div>
               </div>
             ),
             2: (
-              <div className={classes.thirdClassified} key={index}>
+              <div
+                id="thirdClassified"
+                className={classes.thirdClassified}
+                key={index}
+              >
                 <div className={classes.column}>{score.nick}</div>
                 <div className={classes.column}>{score.level}</div>
               </div>

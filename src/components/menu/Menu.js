@@ -8,7 +8,7 @@ const Menu = ({ onPlay }) => {
   return (
     <div className={classes.container}>
       <div className={classes.column}>
-        <div className={classes.content}>
+        <div id="menu-content" className={classes.content}>
           <h2>Matrix Colored App</h2>
           The game consists in a matrix of squares and you have to tap the
           square which have the different color. If you tap the correct you will
@@ -20,6 +20,7 @@ const Menu = ({ onPlay }) => {
           GOOD LUCK!
           <br />
           <button
+            id="play-button-menu"
             className={classes.buttons}
             style={{ borderColor: "green" }}
             onClick={onPlay}

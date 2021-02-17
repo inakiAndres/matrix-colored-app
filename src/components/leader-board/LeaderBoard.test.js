@@ -3,13 +3,21 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import LeaderBoard from "./LeaderBoard";
 
 describe("LeaderBoard component", () => {
+  const scores = { scores: [{ nick: "asd", level: 3 }] };
+
   it("Should render LeaderBoard component", () => {
     const level = 2;
     const gameOver = jest.fn();
     const question = true;
+    const handleOnSubmit = jest.fn();
 
     render(
-      <LeaderBoard level={level} onRestart={gameOver} showQuestion={question} />
+      <LeaderBoard
+        level={level}
+        onRestart={gameOver}
+        showQuestion={question}
+        handleOnSubmit={handleOnSubmit}
+      />
     );
 
     const leaderBoard = screen.getByTestId("leader-board");
